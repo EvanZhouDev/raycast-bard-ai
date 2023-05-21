@@ -1,10 +1,11 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "chatgpt-quick-actions",
-  "title": "ChatGPT Quick Actions",
-  "description": "Performs one-shot actions with ChatGPT",
-  "icon": "openai-logo.png",
-  "author": "alanzchen",
+  "name": "raycast-bard-ai",
+  "title": "Google Bard",
+  "description": "Perform Actions with Google Bard",
+  "icon": "bard.png",
+  "author": "EvanZhouDev",
+  "contributors": ["VaibhavSatishkumar"],
   "categories": [
     "Productivity"
   ],
@@ -14,120 +15,70 @@
       "name": "summarize",
       "title": "Summarize",
       "description": "Summarize selected text",
-      "mode": "view",
-      "preferences": [
-        {
-          "name": "prompt_summarize",
-          "title": "Summarize Prompt",
-          "description": "The prompt for the summarize command",
-          "type": "textfield",
-          "default": "Summarize the following text as concise as possible: \n\n",
-          "required": false
-        }
-      ]
+      "mode": "view"
     },
     {
-      "name": "rewrite",
-      "title": "Rewrite",
-      "description": "Rewrite selected text",
-      "mode": "view",
-      "preferences": [
-        {
-          "name": "prompt_rewrite",
-          "title": "Rewrite Prompt",
-          "description": "The prompt for the rewrite command",
-          "type": "textfield",
-          "default": "Rewrite this using an academic tone: \n\n",
-          "required": false
-        }
-      ]
+      "name": "explain",
+      "title": "Explain",
+      "description": "Explain selected text",
+      "mode": "view"
     },
     {
-      "name": "refine",
-      "title": "Refine",
-      "description": "Refine the writing of selected text",
-      "mode": "view",
-      "preferences": [
-        {
-          "name": "prompt_refine",
-          "title": "Refine Prompt",
-          "description": "The prompt for the refine command",
-          "type": "textfield",
-          "default": "Refine the writing and correct grammar mistakes: \n\n",
-          "required": false
-        }
-      ]
+      "name": "comment",
+      "title": "Add Comments to Code",
+      "description": "Add comments to code",
+      "mode": "view"
     },
     {
-      "name": "custom",
-      "title": "Custom Action",
-      "description": "Ask ChatGPT based on a custom prompt",
-      "mode": "view",
-      "preferences": [
-        {
-          "name": "prompt_custom",
-          "title": "Custom Prompt",
-          "description": "The prompt for the custom action command",
-          "type": "textfield",
-          "default": "Refine the writing and correct grammar mistakes: \n\n",
-          "required": false
-        }
-      ]
+      "name": "friendly",
+      "title": "Change Tone to Friendly",
+      "description": "Change tone of selected text to friendly",
+      "mode": "view"
     },
     {
-      "name": "execute",
-      "title": "Execute",
-      "description": "Replace selected text with ChatGPT output",
-      "mode": "no-view"
+      "name": "professional",
+      "title": "Change Tone to Professional",
+      "description": "Change tone of selected text to professional",
+      "mode": "view"
     },
     {
-      "name": "preview",
-      "title": "Preview",
-      "description": "Use selected text as ChatGPT output and preview output",
+      "name": "synonym",
+      "title": "Find Synonym",
+      "description": "Find synonym of selected word",
+      "mode": "view"
+    },
+    {
+      "name": "grammar",
+      "title": "Fix Spelling and Grammar",
+      "description": "Fix spelling and grammar of selected text",
+      "mode": "view"
+    },
+    {
+      "name": "longer",
+      "title": "Make Longer",
+      "description": "Make selected text longer",
+      "mode": "view"
+    },
+    {
+      "name": "shorter",
+      "title": "Make Shorter",
+      "description": "Make selected text shorter",
       "mode": "view"
     }
   ],
-  "dependencies": {
-    "@nem035/gpt-3-encoder": "^1.1.7",
-    "@raycast/api": "^1.48.5",
-    "openai": "^3.2.1",
-    "run-applescript": "^6.1.0"
-  },
   "preferences": [
     {
-      "name": "apikey",
-      "description": "Your OpenAI API Key",
-      "type": "password",
+      "description": "Google __Secure-1PSID Session Cookie Key",
+      "name": "__Secure-1PSID",
       "required": true,
-      "title": "OpenAI API Key"
-    },
-    {
-      "name": "model",
-      "description": "OpenAI LLM to use for your commands",
-      "type": "dropdown",
-      "data": [
-        {
-          "title": "GPT-3.5 Turbo",
-          "value": "gpt-3.5-turbo"
-        },
-        {
-          "title": "GPT-4",
-          "value": "gpt-4"
-        }
-      ],
-      "required": true,
-      "title": "OpenAI Model"
-    },
-    {
-      "name": "sidenote",
-      "title": "SideNote Integration",
-      "description": "Enable SideNote integration (requires SideNote). Allows you to send the results to SideNote as a new note.",
-      "label": "Enabled",
-      "type": "checkbox",
-      "default": false,
-      "required": false
+      "title": "Google Bard Key",
+      "type": "password"
     }
   ],
+  "dependencies": {
+    "@raycast/api": "^1.48.5",
+    "bard-ai": "^1.0.4"
+  },
   "devDependencies": {
     "@types/node": "18.8.3",
     "@types/react": "18.0.9",
