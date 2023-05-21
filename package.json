@@ -5,10 +5,16 @@
   "description": "Perform Actions with Google Bard",
   "icon": "bard.png",
   "author": "EvanZhouDev",
-  "contributors": ["VaibhavSatishkumar"],
+  "contributors": [
+    "VaibhavSatishkumar"
+  ],
   "categories": [
     "Productivity"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EvanZhouDev/raycast-bard-ai.git"
+  },
   "license": "MIT",
   "commands": [
     {
