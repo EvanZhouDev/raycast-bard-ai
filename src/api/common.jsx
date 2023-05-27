@@ -33,10 +33,19 @@ export default function ResultView(prompt, toast_title, type = "text", title, op
 
       try {
         selectedText = await getSelectedText();
-        if (optionalSelect) {
+        if (!prompt) {
+          prompt = selectedText;
+        } else if (optionalSelect) {
           selectedText = "\n\n" + selectedText;
         }
       } catch (error) {
+        if (!prompt) {
+          toast.title = "Error";
+          toast.style = Toast.Style.Failure;
+          setLoading(false);
+          setResponse("⚠️ No input was provided.");
+          return;
+        }
         if (!optionalSelect) {
           toast.title = "Error";
           toast.style = Toast.Style.Failure;
