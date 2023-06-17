@@ -286,7 +286,12 @@ export default function Chat() {
 
   // Creates React component to get a name for a conversation
   // Used for renaming, making new conversation, etc.
-  function ConversationNameForm(title = "Create Conversation", submit = () => {}) {
+  function ConversationNameForm(
+    title = "Create Conversation",
+    submit = () => {
+      return;
+    }
+  ) {
     return (
       <Form
         actions={
