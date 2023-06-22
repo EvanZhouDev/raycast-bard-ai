@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { List, Form, Icon, ActionPanel, Action, confirmAlert, Alert } from "@raycast/api";
 import useLocalStorage from "./api/useChatStorage";
 import { LocalStorage } from "@raycast/api";
+import { Clipboard } from "@raycast/api";
 
 export default function Chat() {
   let {
@@ -380,11 +381,16 @@ export default function Chat() {
     return ConversationNameForm("Rename Conversation", handleRenameConversation);
   };
 
+  const copyResponse = async (response) => {
+    await Clipboard.copy(response);
+  }
+
   // All of the actions in the Chat page
-  const BardActionPanel = () => (
+  const BardActionPanel = ({ response }) => (
     <ActionPanel>
       <ActionPanel.Section title="Google Bard">
         <Action icon={Icon.Stars} title="Get Answer" onAction={submitResponse} />
+        <Action icon={Icon.CopyClipboard} title="Copy Answer" shortcut={{ modifiers: ["cmd", "shift"], key: "c" }} onAction={() => copyResponse(response)} />
       </ActionPanel.Section>
       <ActionPanel.Section title="Manage Conversations">
         <Action.Push
@@ -447,9 +453,9 @@ export default function Chat() {
       inputDate.getFullYear() === currentDate.getFullYear()
       ? `${inputDate.getHours().toString().padStart(2, "0")}:${inputDate.getMinutes().toString().padStart(2, "0")}`
       : `${(inputDate.getMonth() + 1).toString().padStart(2, "0")}/${inputDate
-          .getDate()
-          .toString()
-          .padStart(2, "0")}/${inputDate.getFullYear()}`;
+        .getDate()
+        .toString()
+        .padStart(2, "0")}/${inputDate.getFullYear()}`;
   };
 
   // Makes the dropdown to select conversations
@@ -502,7 +508,7 @@ export default function Chat() {
               accessories={[{ text: `${formatDateTime(metadata.date)}` }]}
               key={question + i}
               title={question}
-              actions={<BardActionPanel />}
+              actions={<BardActionPanel response={response} />}
               detail={<List.Item.Detail markdown={`**${question}**\n\n${response}`} />}
             />
           ));

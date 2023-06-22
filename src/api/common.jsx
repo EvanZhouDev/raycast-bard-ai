@@ -9,6 +9,10 @@ import {
   Icon,
 } from "@raycast/api";
 import { useEffect, useState } from "react";
+
+import fetch from "node-fetch";
+globalThis.fetch = fetch;
+
 import Bard, { askAI } from "bard-ai";
 
 export default function ResultView(prompt, toast_title, type = "text", title, optionalSelect) {
