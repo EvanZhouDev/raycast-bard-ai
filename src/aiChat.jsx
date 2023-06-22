@@ -383,6 +383,7 @@ export default function Chat() {
 
   const copyResponse = async (response) => {
     await Clipboard.copy(response);
+    toast(Toast.Style.Success, `Successfully copied response message.`)
   }
 
   // All of the actions in the Chat page
