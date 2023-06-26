@@ -10,8 +10,9 @@ import { List, Form, Icon, ActionPanel, Action, confirmAlert, Alert } from "@ray
 import useLocalStorage from "./api/useChatStorage";
 import { LocalStorage } from "@raycast/api";
 import { Clipboard } from "@raycast/api";
+import { launchCommand, LaunchType } from "@raycast/api";
 
-export default function Chat() {
+export default function Chat({ launchContext }) {
   let {
     name: [conversationName, setConversationName],
     list: [conversationList, setConversationList],
@@ -59,6 +60,7 @@ export default function Chat() {
     let currentQuestions = getCurrentConversation().questions;
     if (typeof currentQuestions === "object") {
       if (!initializing && isLoaded && currentQuestions.length && currentQuestions[0].response === "Loading...") {
+
         let startTime = Date.now();
         setLoading(true);
         toast(Toast.Style.Animated, "Getting response from Bard...");
@@ -172,6 +174,34 @@ export default function Chat() {
       }
     }
   };
+
+  // if (launchContext?.working) {
+  //   console.log("HIII")
+  //   setConversationList((original) => {
+  //     setCurrentBard(new Bard.Chat());
+  //     let newList = [
+  //       ...structuredClone(original),
+  //       {
+  //         name: "New Conversation",
+  //         questions: [{
+  //           question: launchContext.query,
+  //           response: launchContext.query,
+  //           metadata: {
+  //             conversationID: "Loading IDs...",
+  //             responseID: "Loading IDs...",
+  //             date: new Date(),
+  //           },
+  //         }],
+  //       },
+  //     ];
+  //     nameToIndexMap["New Conversation"] = newList.length - 1;
+  //     setConversationName("New Conversation");
+  //     return newList;
+  //   });
+    // toast(Toast.Style.Success, `Sucessfully created converation "${"New Conversation"}"`);
+    // pop();
+  // }
+
   const deleteConversation = async () => {
     if (
       await confirmAlert({
@@ -254,8 +284,7 @@ export default function Chat() {
         })
       ) {
         await LocalStorage.clear();
-        nameToIndexMap = ["New Conversation"];
-        setConversationName("New Conversation");
+        // ! CLOSE MAIN WINDOW HERE
       }
     }
   };
