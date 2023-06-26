@@ -11,6 +11,6 @@
 - Introducing Bard Explain, an all new way to use Bard from Raycast. Simply ask it any Text or Code based command (i.e. Add Comments to Code, Summarize, etc.) and Bard will now tell you what it has changed and/or done for you. This will help you better understand changes that have happened!
 - Updated to Bard 2023.05.23
 
-## [Introducing Chat] - 2023-06-18
+## [Introducing Chat] - 2023-06-27
 
 - Added a chat feature. Continue on speaking to Bard about a topic, and make/revisit conversations!
