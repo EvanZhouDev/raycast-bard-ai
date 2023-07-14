@@ -469,9 +469,9 @@ export default function Chat() {
       inputDate.getFullYear() === currentDate.getFullYear()
       ? `${inputDate.getHours().toString().padStart(2, "0")}:${inputDate.getMinutes().toString().padStart(2, "0")}`
       : `${(inputDate.getMonth() + 1).toString().padStart(2, "0")}/${inputDate
-        .getDate()
-        .toString()
-        .padStart(2, "0")}/${inputDate.getFullYear()}`;
+          .getDate()
+          .toString()
+          .padStart(2, "0")}/${inputDate.getFullYear()}`;
   };
 
   // Makes the dropdown to select conversations
